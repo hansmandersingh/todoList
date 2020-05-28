@@ -1,26 +1,63 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Todo from './Todo.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  state = {
+    
+    inputText: "",
+    todos: [],
+  }
+
+  id = 0;
+
+  changingVal = (e) => {
+    this.setState({inputText: e.target.value})
+  }
+
+  createTodo = (val) => {
+    this.setState(currentState => ({
+      todos: [...currentState.todos, {value: val, id: this.id++}]
+    })
+    )
+  }
+
+  submittionUpdate = (e) => {
+    e.preventDefault();
+
+    this.createTodo(this.state.inputText);
+
+    this.setState({inputText: ""});
+  }
+
+  deleteTodo = (val) => {
+    this.setState(currentState => ({
+      todos: currentState.todos.filter(todo => todo !== val),
+    }))
+  }
+
+  render() {
+    return (
+      <>
+        <section className="fixmeapp">
+          <header className="header">
+            <h1>rep<span>🔥</span>irs</h1>
+            <form onSubmit={this.submittionUpdate}>
+              <input className="new-repair" value={this.state.inputText} placeholder="What needs to be repaired?" autoFocus="" onChange={this.changingVal} />
+            </form>
+          </header>
+          <section className="main">
+            <ul className="repair-list">
+              {this.state.todos.map(todo => {
+                return <Todo todoParts={todo} deleteTodo={this.deleteTodo} id={this.id}/>
+              })}
+            </ul>
+          </section>
+        </section>   
+      </>
+    )
+  }
 }
 
 export default App;
