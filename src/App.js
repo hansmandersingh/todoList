@@ -1,12 +1,10 @@
 import React from 'react';
 import './App.css';
-import Todo from './Todo.js';
-import Form from './Form.js';
+import Form from './RepairList.js';
 
 class App extends React.Component {
 
   state = {
-    
     inputText: "",
     todos: [],
   }
