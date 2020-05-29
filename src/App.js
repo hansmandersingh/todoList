@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Todo from './Todo.js';
+import Form from './Form.js';
 
 class App extends React.Component {
 
@@ -41,19 +42,7 @@ class App extends React.Component {
     return (
       <>
         <section className="fixmeapp">
-          <header className="header">
-            <h1>rep<span>🔥</span>irs</h1>
-            <form onSubmit={this.submittionUpdate}>
-              <input className="new-repair" value={this.state.inputText} placeholder="What needs to be repaired?" autoFocus="" onChange={this.changingVal} />
-            </form>
-          </header>
-          <section className="main">
-            <ul className="repair-list">
-              {this.state.todos.map(todo => {
-                return <Todo todoParts={todo} deleteTodo={this.deleteTodo} id={this.id}/>
-              })}
-            </ul>
-          </section>
+          <Form />
         </section>   
       </>
     )
