@@ -10,6 +10,21 @@ class Form extends React.Component {
 
   id = 0;
 
+  componentDidMount = () => {
+    fetch('https://5ed0108416017c00165e327c.mockapi.io/api/v1/repairs')
+      .then(data => data.json())
+      .then(json => {
+        console.log(json)
+        let newArray = [];
+
+        json.forEach(repair => {
+          newArray.push({value: repair.task , id: repair.id})
+        });
+
+        this.setState({todos: newArray})
+      })
+  }
+
   changingVal = (e) => {
     this.setState({inputText: e.target.value})
   }
