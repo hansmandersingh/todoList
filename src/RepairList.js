@@ -66,6 +66,12 @@ class Form extends React.Component {
     }))
   }
 
+  clearAll = () => {
+    this.setState(currentState => ({
+      todos: currentState.todos.filter(todo => todo.checked !== "completed")
+    }))
+  }
+
   render() {
     return (
       <>
@@ -82,6 +88,9 @@ class Form extends React.Component {
             })}
           </ul>
         </section>
+        <footer className="footer">     
+          <button className="clear-completed" onClick={() => {this.clearAll()}}>Clear completed</button>
+        </footer>
       </>
     );
   }
