@@ -2,8 +2,15 @@ import React from "react";
 
 class Footer extends React.Component {
   render() {
+    let hidden;
+    if (this.props.lengthOfTodo === 0) {
+      hidden = "footer hidden";
+    } else {
+      hidden = "footer";
+    }
+
     return (
-      <footer className="footer">
+      <footer className={hidden}>
         <button
           className="clear-completed"
           onClick={() => {

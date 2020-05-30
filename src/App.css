@@ -206,14 +206,17 @@ body {
 
 .repair-list li .destroy:hover {
 	color: #af5b5e;
+	cursor: pointer;
 }
 
 .repair-list li .destroy:after {
 	content: '×';
+	cursor: pointer;
 }
 
 .repair-list li:hover .destroy {
 	display: block;
+	cursor: pointer;
 }
 
 .repair-list li .edit {

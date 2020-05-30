@@ -109,7 +109,7 @@ class Form extends React.Component {
             })}
           </ul>
         </section>
-        <Footer clearAll={this.clearAll} />
+        <Footer clearAll={this.clearAll} lengthOfTodo={this.state.todos.length}/>
       </>
     );
   }
